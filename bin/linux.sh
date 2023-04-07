@@ -1,19 +1,19 @@
 #!/bin/bash
 #Shebang
 
-vimrc = $(find "$HOME" -type f -name ".vimrc")
+FILE=~/.vimrc
 #Checks if system type is linux and prints error otherwise
 if (("$(uname)" != "Linux"))
 then 
-	echo "Error: This is meant to be run on a Linux system" >> linuxsetup.log
+	echo "Error: This program needs to be run on a Linux system" >> linuxsetup.log
 	exit
 else #Makes a trash directory in the home
-	mkdir ~/.Trash
-	if (($vimrc == ".vimrc"))
+	mkdir -p ~/.TRASH
+	if [[ -f $FILE ]];
 	then #Finds if .vimrc exists and changes its name to .bup_vimrc
-		mv .vimrc .bup_vimrc
-		echo "We changed .vimrc to .bup_vimrc"
-		echo "$../.etc/vimrc" > ~/.vimrc
+		mv $FILE ~/.bup_vimrc
+		echo ".vimrc changed to .bup_vimrc" >> linuxsetup.log
+		echo "$(cat ~/.dotfiles/etc/vimrc)" > ~/.vimrc
 		echo "source ~/.dotfiles/etc/bashrc_custom" >> ~/.bashrc
 	fi
 fi
