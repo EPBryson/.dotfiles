@@ -13,6 +13,3 @@ This script cleans up everything done in the linux.sh script
 It removes .vimrc, ~/.dotfiles/bashrc_custom in the .bashrc file in the home directory, and .Trash
 ## Makefile
 Runs runs each script respectively, linux having a dependancy on the clean target.
-
-## Comments
-I was unable to get the linux.sh or cleanup.sh to work due to a lack of examples on how the syntax works
